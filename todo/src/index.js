@@ -15,6 +15,17 @@ function reducer(state = defaultState, action){
         case 'ADD_NEW_TODO':
         let newTodos = [...state.todos, action.todo]
         return {...state, todos: newTodos};
+        case 'CHANGE_COMPLETED':
+        let changedTodos = state.todos.map(todo => {
+            if(todo.id === action.toDoInfo.id){
+                todo.completed = action.toDoInfo.completedStatus;
+                return todo;
+            }
+            else {
+                return todo;
+            }
+        })
+        return {...state, todos: changedTodos};
         default:
         return state;
     }

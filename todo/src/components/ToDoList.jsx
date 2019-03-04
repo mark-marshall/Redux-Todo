@@ -7,7 +7,7 @@ export function ToDoList({ todos }) {
   return (
     <ul>
       {todos.map(todo => (
-        <ToDo key={todo.value} value={todo.value} completed={todo.completed} />
+        <ToDo key={todo.id} todo={todo} />
       ))}
     </ul>
   );
