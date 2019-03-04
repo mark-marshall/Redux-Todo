@@ -7,8 +7,14 @@ const changeCompleted = toDoInfo => ({
   toDoInfo,
 });
 
+const deleteItem = toDoID => ({
+    type: 'DELETE_ITEM',
+    toDoID,
+})
+
 export function ToDo(props) {
   return (
+    <div>
     <li
       onClick={() =>
         props.changeCompleted({
@@ -19,6 +25,10 @@ export function ToDo(props) {
     >
       {props.todo.value}
     </li>
+    <button
+    onClick={() => props.deleteItem(props.todo.id)}
+    >Delete item</button>
+    </div>
   );
 }
 
@@ -26,6 +36,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       changeCompleted,
+      deleteItem,
     },
     dispatch,
   );

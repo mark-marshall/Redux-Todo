@@ -13,10 +13,10 @@ const defaultState = {
 function reducer(state = defaultState, action){
     switch(action.type) {
         case 'ADD_NEW_TODO':
-        let newTodos = [...state.todos, action.todo]
+        const newTodos = [...state.todos, action.todo]
         return {...state, todos: newTodos};
         case 'CHANGE_COMPLETED':
-        let changedTodos = state.todos.map(todo => {
+        const changedTodos = state.todos.map(todo => {
             if(todo.id === action.toDoInfo.id){
                 todo.completed = action.toDoInfo.completedStatus;
                 return todo;
@@ -26,6 +26,9 @@ function reducer(state = defaultState, action){
             }
         })
         return {...state, todos: changedTodos};
+        case 'DELETE_ITEM':
+        const updatedTodos = state.todos.filter(todo => todo.id !== action.toDoID);
+        return {...state, todos: updatedTodos};
         default:
         return state;
     }
