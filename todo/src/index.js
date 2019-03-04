@@ -1,18 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
 
-function reducer(state, action) {
-  return {
-    todos: [{ value: 'bake cakes', completed: false }, { value: 'clean car', completed: false }],
-  };
+const defaultState = {
+    todos: [],
 }
 
-const store = createStore(reducer);
+function reducer(state = defaultState, action){
+    switch(action.type) {
+        case 'ADD_NEW_TODO':
+        let newTodos = [...state.todos, action.todo]
+        return {...state, todos: newTodos};
+        default:
+        return state;
+    }
+}
+
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),);
 
 ReactDOM.render(
   <Provider store={store}>
