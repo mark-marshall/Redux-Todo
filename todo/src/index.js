@@ -8,7 +8,7 @@ import App from './App';
 
 function reducer(state, action) {
   return {
-    todos: [{ value: 'bake cakes', completed: false }],
+    todos: [{ value: 'bake cakes', completed: false }, { value: 'clean car', completed: false }],
   };
 }
 

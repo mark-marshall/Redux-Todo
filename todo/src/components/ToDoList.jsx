@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import ToDo from './ToDo';
 
-export function ToDoList(props){
+export function ToDoList({ todos }){
     return (
         <ul>
             {
-                props.todos.map(todo => <ToDo key={todo.value} value={todo.value} completed={todo.completed}/>)
+                todos.map(todo => <ToDo key={todo.value} value={todo.value} completed={todo.completed}/>)
             }
         </ul>
     )
