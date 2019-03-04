@@ -18,6 +18,18 @@ export class InputToDo extends Component {
     });
   };
 
+  addTodo = () => {
+    this.props.addNewToDo({ value: this.state.input, completed: false });
+    this.resetInput();
+  }
+
+  resetInput = () => {
+    this.setState({
+      input: '',
+    });
+  };
+
+
   render() {
     return (
       <div>
@@ -26,7 +38,13 @@ export class InputToDo extends Component {
           value={this.state.input}
           onChange={this.handleInput}
         />
-        <button onClick={() => this.props.addNewToDo({value: this.state.input, completed: false})}>Add ToDo</button>
+        <button
+          onClick={() =>
+            this.addTodo()
+          }
+        >
+          Add ToDo
+        </button>
       </div>
     );
   }
