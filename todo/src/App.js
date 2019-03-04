@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import ToDoList from './components/ToDoList';
 import InputToDo from './components/InputToDo';
@@ -15,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         Hello World
-        <ToDoList todos={this.state.todos}/>
+        <ToDoList />
         <InputToDo />
       </div>
     );
