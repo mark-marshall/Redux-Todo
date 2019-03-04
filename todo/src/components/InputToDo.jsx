@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { v4 } from "uuid";
 
 const addNewToDo = todo => ({
   type: 'ADD_NEW_TODO',
@@ -19,7 +20,7 @@ export class InputToDo extends Component {
   };
 
   addTodo = () => {
-    this.props.addNewToDo({ value: this.state.input, completed: false });
+    this.props.addNewToDo({ id: v4(), value: this.state.input, completed: false });
     this.resetInput();
   }
 
@@ -28,7 +29,6 @@ export class InputToDo extends Component {
       input: '',
     });
   };
-
 
   render() {
     return (

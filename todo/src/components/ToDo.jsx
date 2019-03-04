@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ToDo({ value, completed }){
+export default function ToDo({ value }){
     return (
         <li>
             {value}
