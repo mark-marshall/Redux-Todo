@@ -8,26 +8,24 @@ const changeCompleted = toDoInfo => ({
 });
 
 const deleteItem = toDoID => ({
-    type: 'DELETE_ITEM',
-    toDoID,
-})
+  type: 'DELETE_ITEM',
+  toDoID,
+});
 
-export function ToDo(props) {
+export function ToDo({ changeCompleted, deleteItem, todo }) {
   return (
     <div>
-    <li
-      onClick={() =>
-        props.changeCompleted({
-          id: props.todo.id,
-          completedStatus: !props.todo.completed,
-        })
-      }
-    >
-      {props.todo.value}
-    </li>
-    <button
-    onClick={() => props.deleteItem(props.todo.id)}
-    >Delete item</button>
+      <li
+        onClick={() =>
+          changeCompleted({
+            id: todo.id,
+            completedStatus: !todo.completed,
+          })
+        }
+      >
+        {todo.value}
+      </li>
+      <button onClick={() => deleteItem(todo.id)} type="submit">Delete item</button>
     </div>
   );
 }
