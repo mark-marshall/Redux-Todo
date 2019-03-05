@@ -6,11 +6,11 @@ import ToDo from './ToDo';
 
 export function ToDoList({ todos }) {
   return (
-    <ul>
+    <ol>
       {todos.map(todo => (
         <ToDo key={todo.id} todo={todo} />
       ))}
-    </ul>
+    </ol>
   );
 }
 
