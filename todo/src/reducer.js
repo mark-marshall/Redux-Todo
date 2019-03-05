@@ -7,22 +7,23 @@ const defaultState = {
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case types.ADD_NEW_TODO:
-      const newTodos = [...state.todos, action.todo];
-      return { ...state, todos: newTodos };
+      return { ...state, todos: [...state.todos, action.todo] };
     case types.CHANGE_COMPLETED:
-      const changedTodos = state.todos.map(todo => {
-        if (todo.id === action.toDoInfo.id) {
-          todo.completed = action.toDoInfo.completedStatus;
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.toDoInfo.id) {
+            todo.completed = action.toDoInfo.completedStatus;
+            return todo;
+          }
           return todo;
-        }
-        return todo;
-      });
-      return { ...state, todos: changedTodos };
+        }),
+      };
     case types.DELETE_ITEM:
-      const updatedTodos = state.todos.filter(
-        todo => todo.id !== action.toDoID,
-      );
-      return { ...state, todos: updatedTodos };
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.toDoID),
+      };
     default:
       return state;
   }
