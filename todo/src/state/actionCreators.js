@@ -1,5 +1,6 @@
-import * as types from '../constants/actionTypes';
 import uuid from 'uuid';
+
+import * as types from '../constants/actionTypes';
 
 export function changeCompleted(todo) {
   return {

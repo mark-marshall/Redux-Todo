@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import ToDo from './ToDo';
 
@@ -20,3 +21,11 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(ToDoList);
+
+ToDoList.propTypes = {
+  todos: PT.arrayOf(PT.shape({
+    id: PT.string.isRequired,
+    value: PT.string.isRequired,
+    completed: PT.bool.isRequired,
+  })).isRequired,
+};

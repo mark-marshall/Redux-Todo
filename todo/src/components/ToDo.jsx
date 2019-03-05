@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PT from 'prop-types';
 import styled from 'styled-components';
 
 import { changeCompleted, deleteItem } from '../state/actionCreators';
@@ -44,3 +45,13 @@ export default connect(
   st => st,
   mapDispatchToProps,
 )(ToDo);
+
+ToDo.propTypes = {
+  todo: PT.shape({
+    id: PT.string.isRequired,
+    value: PT.string.isRequired,
+    completed: PT.bool.isRequired,
+  }).isRequired,
+  changeCompleted: PT.func.isRequired,
+  deleteItem: PT.func.isRequired,
+};

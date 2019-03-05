@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import uuid from 'uuid';
+import PT from 'prop-types';
 
 import { addNewToDo } from '../state/actionCreators';
 
@@ -54,3 +54,7 @@ export default connect(
   st => st,
   mapDispatchToProps,
 )(InputToDo);
+
+InputToDo.propTypes = {
+  addNewToDo: PT.func.isRequired,
+}
