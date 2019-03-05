@@ -6,16 +6,47 @@ import styled from 'styled-components';
 
 import { changeCompleted, deleteItem } from '../state/actionCreators';
 
+const ListWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const ToDoWrappers = styled.div`
+  li {
+    font-size: 25px;
+    color: #f6f6f6;
+    cursor: pointer;
+    line-height: 1.7;
+  }
+
   .complete {
     text-decoration: line-through;
-    color: red;
+    color: #eb4e47;
+  }
+`;
+
+const DeleteWrapper = styled.div`
+  button {
+    background-color: #eb4e47;
+    width: 100px;
+    color: #3d075e;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: lowercase;
+    cursor: pointer;
+    margin: 10px 2% 30px 0;
+  }
+
+  button:hover {
+    background-color: #5dc8bd;
   }
 `;
 
 export function ToDo({ changeCompleted, deleteItem, todo }) {
   return (
-    <div>
+    <ListWrapper>
       <ToDoWrappers>
         <li
           onClick={() => changeCompleted(todo)}
@@ -24,10 +55,12 @@ export function ToDo({ changeCompleted, deleteItem, todo }) {
           {todo.value}
         </li>
       </ToDoWrappers>
-      <button onClick={() => deleteItem(todo.id)} type="submit">
-        Delete item
-      </button>
-    </div>
+      <DeleteWrapper>
+        <button onClick={() => deleteItem(todo.id)} type="submit">
+          Delete item
+        </button>
+      </DeleteWrapper>
+    </ListWrapper>
   );
 }
 
