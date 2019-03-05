@@ -35,3 +35,10 @@ export function clearCompleted() {
     type: types.CLEAR_COMPLETED,
   };
 }
+
+export function setToLocalStore(store) {
+  return {
+    type: types.SET_TO_LOCAL_STORE,
+    payload: store,
+  };
+}

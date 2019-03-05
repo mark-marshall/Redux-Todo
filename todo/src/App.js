@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { setToLocalStore } from './state/actionCreators';
 import './App.css';
 import ToDoList from './components/ToDoList';
 import InputToDo from './components/InputToDo';
@@ -21,6 +24,18 @@ const AppWrapper = styled.div`
 `;
 
 class App extends Component {
+  componentDidMount() {
+    if (!!this.props.todos) {
+      this.props.setToLocalStore(JSON.parse(localStorage.getItem('todos')));
+    }
+  }
+
+  componentDidUpdate() {
+    if (!!localStorage.getItem('todos')) {
+      localStorage.setItem('todos', JSON.stringify(this.props.todos));
+    }
+  }
+
   render() {
     return (
       <AppWrapper>
@@ -37,4 +52,22 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      setToLocalStore,
+    },
+    dispatch,
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    todos: state.todos,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

@@ -2,3 +2,4 @@ export const ADD_NEW_TODO = 'ADD_NEW_TODO';
 export const CHANGE_COMPLETED = 'CHANGE_COMPLETED';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const SET_TO_LOCAL_STORE = 'SET_TO_LOCAL_STORE';

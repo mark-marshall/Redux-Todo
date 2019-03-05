@@ -30,6 +30,11 @@ export default function reducer(state = defaultState, action) {
         ...state,
         todos: state.todos.filter(todo => todo.completed === false),
       };
+    case types.SET_TO_LOCAL_STORE:
+      return {
+        ...state,
+        todos: action.payload,
+      };
     default:
       return state;
   }
