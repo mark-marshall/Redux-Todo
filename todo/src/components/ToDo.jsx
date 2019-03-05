@@ -3,22 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { changeCompleted, deleteItem } from '../state/actionCreators';
+
 const ToDoWrappers = styled.div`
   .complete {
     text-decoration: line-through;
     color: red;
   }
 `;
-
-const changeCompleted = toDoInfo => ({
-  type: 'CHANGE_COMPLETED',
-  toDoInfo,
-});
-
-const deleteItem = toDoID => ({
-  type: 'DELETE_ITEM',
-  toDoID,
-});
 
 export function ToDo({ changeCompleted, deleteItem, todo }) {
   return (

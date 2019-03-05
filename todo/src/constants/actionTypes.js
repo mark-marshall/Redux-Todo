@@ -1,0 +1,3 @@
+export const ADD_NEW_TODO = 'ADD_NEW_TODO';
+export const CHANGE_COMPLETED = 'CHANGE_COMPLETED';
+export const DELETE_ITEM = 'DELETE_ITEM';

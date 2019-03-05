@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { v4 } from "uuid";
 
-const addNewToDo = todo => ({
-  type: 'ADD_NEW_TODO',
-  todo,
-});
+import { addNewToDo } from '../state/actionCreators';
 
 export class InputToDo extends Component {
   state = {
