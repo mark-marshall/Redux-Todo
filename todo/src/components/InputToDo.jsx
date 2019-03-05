@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PT from 'prop-types';
 import styled from 'styled-components';
 
-import { addNewToDo } from '../state/actionCreators';
+import { addNewToDo, clearCompleted } from '../state/actionCreators';
 
 const InputWrapper = styled.div`
   button {
@@ -66,6 +66,7 @@ export class InputToDo extends Component {
           onChange={this.handleInput}
         />
         <button onClick={() => this.addTodo()}>Add ToDo</button>
+        <button onClick={this.props.clearCompleted}>Clear Completed</button>
       </InputWrapper>
     );
   }
@@ -75,6 +76,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       addNewToDo,
+      clearCompleted,
     },
     dispatch,
   );

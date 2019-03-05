@@ -28,7 +28,6 @@ const ToDoWrappers = styled.div`
 const DeleteWrapper = styled.div`
   button {
     background-color: #eb4e47;
-    width: 100px;
     color: #3d075e;
     border: none;
     border-radius: 2px;
@@ -57,7 +56,7 @@ export function ToDo({ changeCompleted, deleteItem, todo }) {
       </ToDoWrappers>
       <DeleteWrapper>
         <button onClick={() => deleteItem(todo.id)} type="submit">
-          Delete item
+          X
         </button>
       </DeleteWrapper>
     </ListWrapper>

@@ -11,7 +11,7 @@ export default function reducer(state = defaultState, action) {
     case types.CHANGE_COMPLETED:
       return {
         ...state,
-        todos: state.todos.map((todo) => {
+        todos: state.todos.map(todo => {
           if (todo.id === action.payload.id) {
             todo.completed = action.payload.completed;
             return todo;
@@ -23,6 +23,12 @@ export default function reducer(state = defaultState, action) {
       return {
         ...state,
         todos: state.todos.filter(todo => todo.id !== action.payload),
+      };
+
+    case types.CLEAR_COMPLETED:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.completed === false),
       };
     default:
       return state;

@@ -29,3 +29,9 @@ export function addNewToDo(text) {
     },
   };
 }
+
+export function clearCompleted() {
+  return {
+    type: types.CLEAR_COMPLETED,
+  };
+}
