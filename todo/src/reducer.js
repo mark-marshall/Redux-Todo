@@ -12,8 +12,8 @@ export default function reducer(state = defaultState, action) {
       return {
         ...state,
         todos: state.todos.map((todo) => {
-          if (todo.id === action.toDoInfo.id) {
-            todo.completed = action.toDoInfo.completedStatus;
+          if (todo.id === action.payload.id) {
+            todo.completed = action.payload.completed;
             return todo;
           }
           return todo;
@@ -22,7 +22,7 @@ export default function reducer(state = defaultState, action) {
     case types.DELETE_ITEM:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.toDoID),
+        todos: state.todos.filter(todo => todo.id !== action.payload),
       };
     default:
       return state;

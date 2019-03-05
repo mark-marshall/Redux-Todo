@@ -17,7 +17,7 @@ export function ToDo({ changeCompleted, deleteItem, todo }) {
     <div>
       <ToDoWrappers>
         <li
-          onClick={() => changeCompleted({ id: todo.id, completedStatus: !todo.completed })}
+          onClick={() => changeCompleted(todo)}
           className={todo.completed ? 'complete' : 'incomplete'}
         >
           {todo.value}

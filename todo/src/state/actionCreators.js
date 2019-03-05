@@ -1,17 +1,20 @@
 import * as types from '../constants/actionTypes';
-import uuid from "uuid";
+import uuid from 'uuid';
 
-export function changeCompleted(toDoInfo) {
+export function changeCompleted(todo) {
   return {
     type: types.CHANGE_COMPLETED,
-    toDoInfo,
+    payload: {
+      id: todo.id,
+      completed: !todo.completed,
+    },
   };
 }
 
-export function deleteItem(toDoID) {
+export function deleteItem(id) {
   return {
     type: types.DELETE_ITEM,
-    toDoID,
+    payload: id,
   };
 }
 
@@ -19,9 +22,9 @@ export function addNewToDo(text) {
   return {
     type: types.ADD_NEW_TODO,
     payload: {
-        id: uuid(),
-        value: text,
-        completed: false,
-    }
+      id: uuid(),
+      value: text,
+      completed: false,
+    },
   };
 }
