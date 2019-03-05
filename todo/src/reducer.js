@@ -7,7 +7,7 @@ const defaultState = {
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case types.ADD_NEW_TODO:
-      return { ...state, todos: [...state.todos, action.todo] };
+      return { ...state, todos: [...state.todos, action.payload] };
     case types.CHANGE_COMPLETED:
       return {
         ...state,

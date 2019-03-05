@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import uuid from "uuid";
+import uuid from 'uuid';
 
 import { addNewToDo } from '../state/actionCreators';
 
@@ -17,9 +17,9 @@ export class InputToDo extends Component {
   };
 
   addTodo = () => {
-    this.props.addNewToDo({ id: uuid(), value: this.state.input, completed: false });
+    this.props.addNewToDo(this.state.input);
     this.resetInput();
-  }
+  };
 
   resetInput = () => {
     this.setState({
@@ -35,13 +35,7 @@ export class InputToDo extends Component {
           value={this.state.input}
           onChange={this.handleInput}
         />
-        <button
-          onClick={() =>
-            this.addTodo()
-          }
-        >
-          Add ToDo
-        </button>
+        <button onClick={() => this.addTodo()}>Add ToDo</button>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import uuid from "uuid";
 
 export function changeCompleted(toDoInfo) {
   return {
@@ -14,9 +15,13 @@ export function deleteItem(toDoID) {
   };
 }
 
-export function addNewToDo(todo) {
+export function addNewToDo(text) {
   return {
     type: types.ADD_NEW_TODO,
-    todo,
+    payload: {
+        id: uuid(),
+        value: text,
+        completed: false,
+    }
   };
 }
