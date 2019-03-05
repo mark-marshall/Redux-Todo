@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PT from 'prop-types';
 import styled from 'styled-components';
 
 import { setToLocalStore } from './state/actionCreators';
@@ -25,14 +26,16 @@ const AppWrapper = styled.div`
 
 class App extends Component {
   componentDidMount() {
-    if (!!this.props.todos) {
-      this.props.setToLocalStore(JSON.parse(localStorage.getItem('todos')));
+    const pushFromLocal = JSON.parse(localStorage.getItem('todos'));
+    if (this.props.todos) {
+      this.props.setToLocalStore(pushFromLocal);
     }
   }
 
   componentDidUpdate() {
-    if (!!localStorage.getItem('todos')) {
-      localStorage.setItem('todos', JSON.stringify(this.props.todos));
+    const pushToLocal = JSON.stringify(this.props.todos);
+    if (localStorage.getItem('todos')) {
+      localStorage.setItem('todos', pushToLocal);
     }
   }
 
@@ -40,10 +43,7 @@ class App extends Component {
     return (
       <AppWrapper>
         <h2>
-          Let's get to work{' '}
-          <span role="img" aria-label="octopus">
-            🐙
-          </span>
+          Let's get to work
         </h2>
         <ToDoList />
         <InputToDo />
@@ -71,3 +71,12 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(App);
+
+App.propTypes = {
+  todos: PT.arrayOf(PT.shape({
+    id: PT.string.isRequired,
+    value: PT.string.isRequired,
+    completed: PT.bool.isRequired,
+  })).isRequired,
+  setToLocalStore: PT.func.isRequired,
+};
